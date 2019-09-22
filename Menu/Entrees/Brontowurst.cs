@@ -10,7 +10,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// Brontowurst entree
     /// </summary>
-    public class Brontowurst
+    public class Brontowurst : Entree
     {
         /// <summary>
         /// bool for if bun is included

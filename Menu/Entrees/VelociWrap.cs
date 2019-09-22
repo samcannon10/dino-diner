@@ -11,7 +11,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// Veloci-Wrap entree
     /// </summary>
-    public class VelociWrap
+    public class VelociWrap : Entree
     {
         /// <summary>
         /// bool for if dressing is included

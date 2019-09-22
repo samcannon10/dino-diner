@@ -9,7 +9,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// Prehistoric PB & J entree
     /// </summary>
-    public class PrehistoricPBJ
+    public class PrehistoricPBJ : Entree
     {
         /// <summary>
         /// bool for if peanut butter is included

@@ -10,7 +10,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// Dino Nuggets entree
     /// </summary>
-    public class DinoNuggets
+    public class DinoNuggets : Entree
     {
         /// <summary>
         /// Property for price of entree

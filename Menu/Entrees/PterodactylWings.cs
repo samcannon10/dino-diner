@@ -10,7 +10,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// Pterodactyl Wings entree
     /// </summary>
-    public class PterodactylWings
+    public class PterodactylWings : Entree
     {
         /// <summary>
         /// Property for price of entree
