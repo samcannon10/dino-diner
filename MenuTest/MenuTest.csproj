@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Menu\Menu.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entrees\" />
+  </ItemGroup>
+
 </Project>
