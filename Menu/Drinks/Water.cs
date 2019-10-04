@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Water drink
@@ -54,6 +54,15 @@ namespace DinoDiner.Menu.Drinks
         public void AddLemon()
         {
             Lemon = true;
+        }
+
+        /// <summary>
+        /// Default ToString for water
+        /// </summary>
+        /// <returns>The drink and its size as a string</returns>
+        public override string ToString()
+        {
+            return this.Size + " Water";
         }
     }
 }

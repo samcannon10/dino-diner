@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Veloci-Wrap entree
@@ -27,18 +27,9 @@ namespace DinoDiner.Menu.Entrees
         private bool cheese = true;
 
         /// <summary>
-        /// Property for price of entree
-        /// </summary>
-        public double Price { get; set; }
-        /// <summary>
-        /// Property for calories in entree
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
         /// Property for ingredients in entree
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -81,6 +72,15 @@ namespace DinoDiner.Menu.Entrees
         public void HoldCheese()
         {
             this.cheese = false;
+        }
+
+        /// <summary>
+        /// Default ToString for VelociWrap
+        /// </summary>
+        /// <returns>The name of the entree as a string</returns>
+        public override string ToString()
+        {
+            return "Veloci-Wrap";
         }
     }
 }

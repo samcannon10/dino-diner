@@ -4,7 +4,7 @@
  */
 using System.Collections.Generic;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Prehistoric PB & J entree
@@ -21,18 +21,9 @@ namespace DinoDiner.Menu.Entrees
         private bool jelly = true;
 
         /// <summary>
-        /// Property for price of entree
-        /// </summary>
-        public double Price { get; set; }
-        /// <summary>
-        /// Property for calories in entree
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
         /// Property for ingredients in entree
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -66,6 +57,16 @@ namespace DinoDiner.Menu.Entrees
         public void HoldJelly()
         {
             this.jelly = false;
+        }
+
+
+        /// <summary>
+        /// Default ToString for PrehistoricPBJ
+        /// </summary>
+        /// <returns>The name of the entree as a string</returns>
+        public override string ToString()
+        {
+            return "Prehistoric PB&J";
         }
     }
 }

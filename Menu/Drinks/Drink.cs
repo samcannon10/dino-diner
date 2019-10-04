@@ -5,23 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
-    /// <summary>
-    /// enum for possible drinks sizes
-    /// </summary>
-    public enum Size
-    {
-        Small,
-        Medium,
-        Large
-    }
-
 
     /// <summary>
     /// base Drink class
     /// </summary>
-    public abstract class Drink
+    public abstract class Drink : IMenuItem
     {
         /// <summary>
         /// Backing variable for drink size

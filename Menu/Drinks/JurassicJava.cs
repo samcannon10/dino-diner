@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// JurassicJava drink
@@ -91,6 +91,17 @@ namespace DinoDiner.Menu.Drinks
         public void AddIce()
         {
             Ice = true;
+        }
+
+
+        /// <summary>
+        /// Default ToString for Jurassic Java
+        /// </summary>
+        /// <returns>The drink, its size, and if it is decaf as a string</returns>
+        public override string ToString()
+        {
+            if (Decaf) return this.Size + " Decaf Jurassic Java";
+            else return this.Size + " Jurassic Java";
         }
     }
 }

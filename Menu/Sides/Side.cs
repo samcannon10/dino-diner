@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu
 {
 
     public enum Size
@@ -16,7 +16,7 @@ namespace DinoDiner.Menu.Sides
         Large
     }
 
-    public abstract class Side
+    public abstract class Side : IMenuItem
     {
         protected Size size;
 

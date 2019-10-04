@@ -5,26 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Pterodactyl Wings entree
     /// </summary>
     public class PterodactylWings : Entree
     {
-        /// <summary>
-        /// Property for price of entree
-        /// </summary>
-        public double Price { get; set; }
-        /// <summary>
-        /// Property for calories in entree
-        /// </summary>
-        public uint Calories { get; set; }
 
         /// <summary>
         /// Property for ingredients in entree
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -40,6 +32,16 @@ namespace DinoDiner.Menu.Entrees
         {
             this.Price = 7.21;
             this.Calories = 318;
+        }
+
+
+        /// <summary>
+        /// Default ToString for PterodactylWings
+        /// </summary>
+        /// <returns>The name of the entree as a string</returns>
+        public override string ToString()
+        {
+            return "Pterodactyl Wings";
         }
     }
 }

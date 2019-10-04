@@ -26,7 +26,7 @@ For each of these sides, you will need to create a corresponding C# class that i
 
 You will need to follow the provided style guide.
 
-Each drink should be declared in the **DinoDiner.Menu.Drinks** namespace.
+Each drink should be declared in the **DinoDiner.Menu** namespace.
 
 
 ### Drink Base Class (10 points)

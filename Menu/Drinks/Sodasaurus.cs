@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
 
     /// <summary>
@@ -83,6 +83,16 @@ namespace DinoDiner.Menu.Drinks
             Price = 1.5;
             Calories = 112;
             Ice = true;
+        }
+
+
+        /// <summary>
+        /// Default ToString for Sodasaurus
+        /// </summary>
+        /// <returns>The drink, its flavor, and its size as a string</returns>
+        public override string ToString()
+        {
+            return this.Size + " " + this.Flavor + " Sodasaurus";
         }
     }
 }

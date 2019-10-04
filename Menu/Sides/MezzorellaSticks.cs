@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// MezzorellaSticks Side
@@ -45,16 +45,6 @@ namespace DinoDiner.Menu.Sides
         }
 
         /// <summary>
-        /// Property for price of side
-        /// </summary>
-        public double Price { get; set; }
-
-        /// <summary>
-        /// Property for calories in side
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
         /// Property for ingredients in side
         /// </summary>
         public override List<string> Ingredients
@@ -75,5 +65,9 @@ namespace DinoDiner.Menu.Sides
             Calories = 540;
         }
 
+        public override string ToString()
+        {
+            return this.Size + " Mezzorella Sticks";
+        }
     }
 }
