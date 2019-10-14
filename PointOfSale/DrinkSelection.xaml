@@ -23,10 +23,10 @@
 
         <TextBlock Text="Drink" FontSize="16" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
         <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-            <Button Content="Water" Margin="10,25,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
-            <Button Content="Jurassic Java" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
-            <Button Content="Tyrannotea" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
-            <Button Content="Sodasaurus" Margin="10,5,10,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
+            <Button Content="Water" Click ="WaterClick" Margin="10,25,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
+            <Button Content="Jurassic Java" Click="JavaClick" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
+            <Button Content="Tyrannotea" Click="TyrannoteaClick" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
+            <Button Content="Sodasaurus" Click="SodasaurusClick" Margin="10,5,10,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
         </StackPanel>
         
         <TextBlock Text="Size" FontSize="16" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
@@ -38,11 +38,11 @@
 
         <TextBlock Text="Special" FontSize="16" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
         <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-            <Button Click="ChooseFlavor" Content="Flavor" Margin="10,25,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
-            <Button Content="Sweet" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
-            <Button Content="Decaf" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
-            <Button Content="Add Lemon" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
-            <Button Content="Hold Ice" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Click="ChooseFlavor" Name="FlavorButton" Content="Flavor" Margin="10,25,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Name="SweetButton" Content="Sweet" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Name="DecafButton" Content="Decaf" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Name="LemonButton" Content="Add Lemon" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Name="IceButton" Content="Hold Ice" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
         </StackPanel>
     </Grid>
 </Page>
