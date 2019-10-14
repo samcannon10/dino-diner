@@ -48,6 +48,11 @@ namespace PointOfSale
             NavigationService.Navigate(new FlavorSelection());
         }
 
+        /// <summary>
+        /// Hides and shows Buttons appropriate for Water
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void WaterClick(object sender, RoutedEventArgs args)
         {
             LemonButton.Visibility = Visibility.Visible;
@@ -61,6 +66,11 @@ namespace PointOfSale
             DecafButton.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Hides and shows Buttons appropriate for Sodasaurus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void SodasaurusClick(object sender, RoutedEventArgs args)
         {
             IceButton.Visibility = Visibility.Visible;
@@ -74,6 +84,11 @@ namespace PointOfSale
             LemonButton.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Hides and shows Buttons appropriate for Jurassic Java
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void JavaClick(object sender, RoutedEventArgs args)
         {
             DecafButton.Visibility = Visibility.Visible;
@@ -88,6 +103,11 @@ namespace PointOfSale
             IceButton.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Hides and shows Buttons appropriate for Tyrannotea
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void TyrannoteaClick(object sender, RoutedEventArgs args)
         {
             LemonButton.Visibility = Visibility.Visible;
