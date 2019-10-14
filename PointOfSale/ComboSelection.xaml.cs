@@ -1,6 +1,5 @@
-﻿/*MainWindow.xaml.cs
- * Author: Nathan Bean
- * Modified by: Samuel Cannon
+﻿/*ComboSelection.xaml.cs
+ * Author: Samuel Cannon
  */
 
 using System;
@@ -21,16 +20,18 @@ using System.Windows.Shapes;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ComboSelection.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ComboSelection : Page
     {
-        /// <summary>
-        /// Initializes MainWindow Window
-        /// </summary>
-        public MainWindow()
+        public ComboSelection()
         {
             InitializeComponent();
+        }
+
+        public void ChangeCombo(object sender, RoutedEventArgs args)
+        {
+            NavigationService.Navigate(new CustomizeCombo());
         }
     }
 }

@@ -1,6 +1,5 @@
-﻿/*MainWindow.xaml.cs
- * Author: Nathan Bean
- * Modified by: Samuel Cannon
+﻿/*FlavorSelection.xaml.cs
+ * Author: Samuel Cannon
  */
 
 using System;
@@ -21,14 +20,14 @@ using System.Windows.Shapes;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for FlavorSelection.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FlavorSelection : Page
     {
         /// <summary>
-        /// Initializes MainWindow Window
+        /// Initializes FlavorSelection Page
         /// </summary>
-        public MainWindow()
+        public FlavorSelection()
         {
             InitializeComponent();
         }

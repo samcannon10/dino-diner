@@ -1,0 +1,39 @@
+﻿<Page x:Class="PointOfSale.CustomizeCombo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PointOfSale"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CustomizeCombo">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Add to Order" VerticalAlignment="Center" TextAlignment="Center" Grid.ColumnSpan="2"/>
+
+        <TextBlock Text="Side" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontSize="16"/>
+        <Button Click = "SelectSide" Margin="10,25,5,5" Grid.Row="1" Grid.Column="0" Content="Friceritops"/>
+
+        <TextBlock Text="Drink" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" FontSize="16"/>
+        <Button Click = "SelectDrink" Margin="5,25,10,5" Grid.Row="1" Grid.Column="1" Content="Sodasaurus"/>
+
+        <TextBlock Text="Size" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontSize="16"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <RadioButton Content="Small" GroupName="ComboSize"  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Content="Medium" GroupName="ComboSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Content="Large" GroupName="ComboSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+        </StackPanel>
+    </Grid>
+</Page>

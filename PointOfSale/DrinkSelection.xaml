@@ -1,0 +1,48 @@
+﻿<Page x:Class="PointOfSale.DrinkSelection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PointOfSale"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DrinkSelection">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Add to Order" TextAlignment="Center" Grid.Column="1" VerticalAlignment="Center"/>
+
+        <TextBlock Text="Drink" FontSize="16" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+        <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <Button Content="Water" Margin="10,25,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
+            <Button Content="Jurassic Java" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
+            <Button Content="Tyrannotea" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
+            <Button Content="Sodasaurus" Margin="10,5,10,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="75"/>
+        </StackPanel>
+        
+        <TextBlock Text="Size" FontSize="16" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <RadioButton Content="Small" GroupName="DrinkSize"  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Content="Medium" GroupName="DrinkSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Content="Large" GroupName="DrinkSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+        </StackPanel>
+
+        <TextBlock Text="Special" FontSize="16" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+        <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <Button Click="ChooseFlavor" Content="Flavor" Margin="10,25,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Content="Sweet" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Content="Decaf" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Content="Add Lemon" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Content="Hold Ice" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+        </StackPanel>
+    </Grid>
+</Page>

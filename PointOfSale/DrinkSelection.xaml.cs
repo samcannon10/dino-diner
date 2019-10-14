@@ -1,6 +1,5 @@
-﻿/*MainWindow.xaml.cs
- * Author: Nathan Bean
- * Modified by: Samuel Cannon
+﻿/*DrinkSelection.xaml.cs
+ * Author: Samuel Cannon
  */
 
 using System;
@@ -21,16 +20,26 @@ using System.Windows.Shapes;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DrinkSelection.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DrinkSelection : Page
     {
         /// <summary>
-        /// Initializes MainWindow Window
+        /// Initializes DrinkSelection Page
         /// </summary>
-        public MainWindow()
+        public DrinkSelection()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Sends user to FlavorSelection Page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void ChooseFlavor(object sender, RoutedEventArgs args)
+        {
+            NavigationService.Navigate(new FlavorSelection());
         }
     }
 }
