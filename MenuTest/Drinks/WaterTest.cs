@@ -8,7 +8,7 @@ using System.Text;
 using Xunit;
 using DinoDiner.Menu;
 
-namespace DinoDiner.MenuTest.Drinks
+namespace MenuTest.Drinks
 {
     public class WaterTest
     {
@@ -87,6 +87,97 @@ namespace DinoDiner.MenuTest.Drinks
             Assert.Equal<Size>(Size.Small, w.Size);
             Assert.Equal<uint>(0, w.Calories);
             Assert.Equal<double>(0.1, w.Price);
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            Water w = new Water();
+            Assert.Empty(w.Special);
+        }
+
+        [Fact]
+        public void AddLemonShouldAppearInSpecial()
+        {
+            Water w = new Water();
+            w.AddLemon();
+
+            Assert.Collection<string>(w.Special, item =>
+            {
+                Assert.Equal("Add Lemon", item);
+            });
+        }
+
+        [Fact]
+        public void HoldIceShouldAppearInSpecial()
+        {
+            Water w = new Water();
+            w.HoldIce();
+
+            Assert.Collection<string>(w.Special, item =>
+            {
+                Assert.Equal("Hold Ice", item);
+            });
+        }
+
+        [Theory]
+        [InlineData("Ice")]
+        [InlineData("Special")]
+        public void HoldIceShouldNotifyOfPropertyChanged(string propertyName)
+        {
+            Water w = new Water();
+
+            Assert.PropertyChanged(w, propertyName, () =>
+            {
+                w.HoldIce();
+            });
+        }
+
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Description")]
+        [InlineData("Special")]
+        [InlineData("Calories")]
+        public void SizeShouldNotifyOfPropertyChanged(string propertyName)
+        {
+            Water w = new Water();
+
+            Assert.PropertyChanged(w, propertyName, () =>
+            {
+                w.Size = Size.Large;
+            });
+        }
+
+        [Theory]
+        [InlineData("Lemon")]
+        [InlineData("Special")]
+        public void AddLemonShouldNotifyOfPropertyChanged(string propertyName)
+        {
+            Water w = new Water();
+            Assert.PropertyChanged(w, propertyName, () =>
+            {
+                w.AddLemon();
+            });
+        }
+
+        [Fact]
+        public void PriceShouldNotifyOfPropertyChange()
+        {
+            Water w = new Water();
+            Assert.PropertyChanged(w, "Price", () =>
+            {
+                w.Price = 0.1;
+            });
+        }
+
+        [Fact]
+        public void CaloriesShouldNotifyOfPropertyChange()
+        {
+            Water w = new Water();
+            Assert.PropertyChanged(w, "Calories", () =>
+            {
+                w.Calories = 0;
+            });
         }
     }
 }

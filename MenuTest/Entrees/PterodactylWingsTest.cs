@@ -30,5 +30,31 @@ namespace MenuTest.Entrees
             Assert.Equal<int>(2, ingredients.Count);
         }
 
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            PterodactylWings pw = new PterodactylWings();
+            Assert.Empty(pw.Special);
+        }
+
+        [Fact]
+        public void PriceShouldNotifyOfPropertyChange()
+        {
+            PterodactylWings pw = new PterodactylWings();
+            Assert.PropertyChanged(pw, "Price", () =>
+            {
+                pw.Price = 0.1;
+            });
+        }
+
+        [Fact]
+        public void CaloriesShouldNotifyOfPropertyChange()
+        {
+            PterodactylWings pw = new PterodactylWings();
+            Assert.PropertyChanged(pw, "Calories", () =>
+            {
+                pw.Calories = 0;
+            });
+        }
     }
 }

@@ -3,6 +3,7 @@
  * Modified by: Samuel Cannon
  */
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
@@ -35,6 +36,20 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
+        /// Holds any special instructions for preparation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!peanutButter) special.Add("Hold Peanut Butter");
+                if (!jelly) special.Add("Hold Jelly");
+                return special.ToArray();
+            }
+        }
+
+        /// <summary>
         /// Constructor for PrehistoricPBJ entree
         /// </summary>
         public PrehistoricPBJ()
@@ -49,6 +64,7 @@ namespace DinoDiner.Menu
         public void HoldPeanutButter()
         {
             this.peanutButter = false;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -57,6 +73,7 @@ namespace DinoDiner.Menu
         public void HoldJelly()
         {
             this.jelly = false;
+            NotifyOfPropertyChanged("Special");
         }
 
 

@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
@@ -28,6 +29,8 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Sodasaurus : Drink
     {
+        protected SodasaurusFlavor flavor;
+
         /// <summary>
         /// Property for size enum for this drink.
         /// Sets price and calories accordingly
@@ -41,6 +44,10 @@ namespace DinoDiner.Menu
             set
             {
                 size = value;
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
                 switch(size)
                 {
                     case Size.Small:
@@ -73,16 +80,38 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Property for the flavor of this soda
         /// </summary>
-        public SodasaurusFlavor Flavor { get; set; }
+        public SodasaurusFlavor Flavor
+        {
+            get
+            {
+                return flavor;
+            }
+            set
+            {
+                flavor = value;
+                NotifyOfPropertyChanged("Flavor");
+                NotifyOfPropertyChanged("Description");
+            }
+        }
+
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!Ice) special.Add("Hold Ice");
+                return special.ToArray();
+            }
+        }
 
         /// <summary>
         /// Constructor for Sodasaurus Drink
         /// </summary>
         public Sodasaurus()
         {
-            Price = 1.5;
-            Calories = 112;
-            Ice = true;
+            price = 1.5;
+            calories = 112;
+            flavor = SodasaurusFlavor.Cola;
         }
 
 

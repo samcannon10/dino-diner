@@ -83,5 +83,46 @@ namespace MenuTest.Sides
             tt.Size = Size.Large;
             Assert.Equal<Size>(Size.Large, tt.Size);
         }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            Triceritots tt = new Triceritots();
+            Assert.Empty(tt.Special);
+        }
+
+        [Theory]
+        [InlineData("Description")]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        public void SizeChangeShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Triceritots tt = new Triceritots();
+            Assert.PropertyChanged(tt, propertyName, () =>
+            {
+                tt.Size = Size.Large;
+            });
+        }
+
+        [Fact]
+        public void PriceShouldNotifyOfPropertyChange()
+        {
+            Triceritots tt = new Triceritots();
+            Assert.PropertyChanged(tt, "Price", () =>
+            {
+                tt.Price = 0.1;
+            });
+        }
+
+        [Fact]
+        public void CaloriesShouldNotifyOfPropertyChange()
+        {
+            Triceritots tt = new Triceritots();
+            Assert.PropertyChanged(tt, "Calories", () =>
+            {
+                tt.Calories = 0;
+            });
+        }
     }
 }

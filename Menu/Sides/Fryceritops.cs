@@ -25,7 +25,11 @@ namespace DinoDiner.Menu
             set
             {
                 size = value;
-                switch(size)
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
+                switch (size)
                 {
                     case Size.Small:
                         Price = 0.99;
@@ -65,9 +69,13 @@ namespace DinoDiner.Menu
             Price = 0.99;
         }
 
+        /// <summary>
+        /// Default ToString for Fryceritops
+        /// </summary>
+        /// <returns>The side and its size as a string</returns>
         public override string ToString()
         {
-            return this.Size + " Friceritops";
+            return this.Size + " Fryceritops";
         }
     }
 }

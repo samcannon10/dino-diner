@@ -55,6 +55,99 @@ namespace MenuTest.Entrees
             bw.HoldOnion();
             Assert.DoesNotContain<string>("Onion", bw.Ingredients);
         }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.Empty(bw.Special);
+        }
+
+        [Fact]
+        public void HoldPeppersShouldAppearInSpecial()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldPeppers();
+
+            Assert.Collection<string>(bw.Special, item =>
+            {
+                Assert.Equal("Hold Pepper", item);
+            });
+        }
+
+        [Fact]
+        public void HoldOnionShouldAppearInSpecial()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldOnion();
+
+            Assert.Collection<string>(bw.Special, item =>
+            {
+                Assert.Equal("Hold Onion", item);
+            });
+        }
+
+        [Fact]
+        public void HoldBunShouldAppearInSpecial()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldBun();
+
+            Assert.Collection<string>(bw.Special, item =>
+            {
+                Assert.Equal("Hold Bun", item);
+            });
+        }
+
+        [Fact]
+        public void HoldBunShouldNotifyOfPropertyChange()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.PropertyChanged(bw, "Special", () =>
+            {
+                bw.HoldBun();
+            });
+        }
+
+        [Fact]
+        public void HoldOnionShouldNotifyOfPropertyChange()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.PropertyChanged(bw, "Special", () =>
+            {
+                bw.HoldOnion();
+            });
+        }
+
+        [Fact]
+        public void HoldPeppersShouldNotifyOfPropertyChange()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.PropertyChanged(bw, "Special", () =>
+            {
+                bw.HoldPeppers();
+            });
+        }
+
+        [Fact]
+        public void PriceShouldNotifyOfPropertyChange()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.PropertyChanged(bw, "Price", () =>
+            {
+                bw.Price = 0.1;
+            });
+        }
+
+        [Fact]
+        public void CaloriesShouldNotifyOfPropertyChange()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.PropertyChanged(bw, "Calories", () =>
+            {
+                bw.Calories = 0;
+            });
+        }
     }
 
 }

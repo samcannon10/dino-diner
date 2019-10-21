@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
@@ -12,6 +13,7 @@ namespace DinoDiner.Menu
     /// </summary>
     public class DinoNuggets : Entree
     {
+        private int nuggetCount;
 
         /// <summary>
         /// Property for ingredients in entree
@@ -21,11 +23,24 @@ namespace DinoDiner.Menu
             get
             {
                 List<string> ingredients = new List<string>();
-                for(int i = 0; i < Calories/59; i++)
+                for(int i = 0; i < nuggetCount; i++)
                 {
                     ingredients.Add("Chicken Nugget");
                 }
                 return ingredients;
+            }
+        }
+
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if(nuggetCount > 6)
+                {
+                    special.Add($"{nuggetCount - 6} Extra Nuggets");
+                }
+                return special.ToArray();
             }
         }
 
@@ -36,6 +51,7 @@ namespace DinoDiner.Menu
         {
             this.Price = 4.25;
             this.Calories = 6 * 59;
+            this.nuggetCount = 6;
         }
 
         /// <summary>
@@ -46,6 +62,10 @@ namespace DinoDiner.Menu
         {
             this.Price += 0.25;
             this.Calories += 59;
+            this.nuggetCount++;
+            NotifyOfPropertyChanged("Price");
+            NotifyOfPropertyChanged("Calories");
+            NotifyOfPropertyChanged("Special");
         }
 
 

@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
@@ -22,6 +23,14 @@ namespace DinoDiner.Menu
             {
                 List<string> ingredients = new List<string>() { "Chicken", "Wing Sauce" };
                 return ingredients;
+            }
+        }
+
+        public override string[] Special
+        {
+            get
+            {
+                return new string[0];
             }
         }
 

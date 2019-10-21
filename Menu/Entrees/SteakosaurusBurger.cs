@@ -1,9 +1,11 @@
 ﻿/*SteakosaursBurger.cs
  * Author: Samuel Cannon
  */
+
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
@@ -46,6 +48,22 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
+        /// Holds any special instructions for preparation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!bun) special.Add("Hold Bun");
+                if (!pickles) special.Add("Hold Pickles");
+                if (!ketchup) special.Add("Hold Ketchup");
+                if (!mustard) special.Add("Hold Mustard");
+                return special.ToArray();
+            }
+        }
+
+        /// <summary>
         /// Constructor for SteakosaurusBurger entree
         /// </summary>
         public SteakosaurusBurger()
@@ -60,6 +78,7 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             this.bun = false;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -68,6 +87,7 @@ namespace DinoDiner.Menu
         public void HoldPickle()
         {
             this.pickles = false;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -76,6 +96,7 @@ namespace DinoDiner.Menu
         public void HoldKetchup()
         {
             this.ketchup = false;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -84,8 +105,8 @@ namespace DinoDiner.Menu
         public void HoldMustard()
         {
             this.mustard = false;
+            NotifyOfPropertyChanged("Special");
         }
-
 
         /// <summary>
         /// Default ToString for SteakosaurusBurger

@@ -64,6 +64,125 @@ namespace MenuTest.Entrees
             sb.HoldMustard();
             Assert.DoesNotContain<string>("Mustard", sb.Ingredients);
         }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.Empty(sb.Special);
+        }
+
+        [Fact]
+        public void HoldBunShouldAppearInSpecial()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            sb.HoldBun();
+
+            Assert.Collection<string>(sb.Special, item =>
+            {
+                Assert.Equal("Hold Bun", item);
+            });
+        }
+
+        [Fact]
+        public void HoldKetchupShouldAppearInSpecial()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            sb.HoldKetchup();
+
+            Assert.Collection<string>(sb.Special, item =>
+            {
+                Assert.Equal("Hold Ketchup", item);
+            });
+        }
+
+        [Fact]
+        public void HoldMustardShouldAppearInSpecial()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            sb.HoldMustard();
+
+            Assert.Collection<string>(sb.Special, item =>
+            {
+                Assert.Equal("Hold Mustard", item);
+            });
+        }
+
+        [Fact]
+        public void HoldPickleShouldAppearInSpecial()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            sb.HoldPickle();
+
+            Assert.Collection<string>(sb.Special, item =>
+            {
+                Assert.Equal("Hold Pickles", item);
+            });
+        }
+
+        [Fact]
+        public void HoldBunNotifyOfPropertyChange()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+
+            Assert.PropertyChanged(sb, "Special", () =>
+            {
+                sb.HoldBun();
+            });
+        }
+
+        [Fact]
+        public void HoldKetchupNotifyOfPropertyChange()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+
+            Assert.PropertyChanged(sb, "Special", () =>
+            {
+                sb.HoldKetchup();
+            });
+        }
+
+        [Fact]
+        public void HoldMustardNotifyOfPropertyChange()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+
+            Assert.PropertyChanged(sb, "Special", () =>
+            {
+                sb.HoldMustard();
+            });
+        }
+
+        [Fact]
+        public void HoldPickleNotifyOfPropertyChange()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+
+            Assert.PropertyChanged(sb, "Special", () =>
+            {
+                sb.HoldPickle();
+            });
+        }
+
+        [Fact]
+        public void PriceShouldNotifyOfPropertyChange()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.PropertyChanged(sb, "Price", () =>
+            {
+                sb.Price = 0.1;
+            });
+        }
+
+        [Fact]
+        public void CaloriesShouldNotifyOfPropertyChange()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.PropertyChanged(sb, "Calories", () =>
+            {
+                sb.Calories = 0;
+            });
+        }
     }
 
 }

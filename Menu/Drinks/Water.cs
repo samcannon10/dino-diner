@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
@@ -13,16 +14,43 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Water : Drink
     {
+        protected bool lemon;
+
         /// <summary>
         /// Property for size enum for this drink
         /// </summary>
-        public override Size Size { get; set; }
+        public override Size Size
+        { 
+            get
+            {
+                return size;
+            }
+            set
+            {
+                size = value;
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Description");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+            }
+        }
 
         /// <summary>
         /// Property for if lemon is included
         /// or not
         /// </summary>
-        public bool Lemon { get; set; }
+        public bool Lemon
+        { 
+            get
+            {
+                return lemon;
+            }
+            set
+            {
+                lemon = value;
+                NotifyOfPropertyChanged("Lemon");
+            }
+        }
 
         /// <summary>
         /// Property for ingredients in this drink
@@ -38,14 +66,27 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
+        /// Holds any special instructions for preparation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (Lemon) special.Add("Add Lemon");
+                if (!Ice) special.Add("Hold Ice");
+                return special.ToArray();
+            }
+        }
+
+        /// <summary>
         /// Constructor for Water Drink
         /// </summary>
         public Water()
         {
-            Price = 0.10;
-            Calories = 0;
-            Lemon = false;
-            Ice = true;
+            price = 0.10;
+            calories = 0;
+            lemon = false;
         }
 
         /// <summary>
@@ -54,6 +95,7 @@ namespace DinoDiner.Menu
         public void AddLemon()
         {
             Lemon = true;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>

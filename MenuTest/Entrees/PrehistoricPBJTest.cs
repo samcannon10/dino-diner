@@ -46,6 +46,80 @@ namespace MenuTest.Entrees
             pbj.HoldJelly();
             Assert.DoesNotContain<string>("Jelly", pbj.Ingredients);
         }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            Assert.Empty(pbj.Special);
+        }
+
+        [Fact]
+        public void HoldPeanutButterShouldAppearInSpecial()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            pbj.HoldPeanutButter();
+
+
+            Assert.Collection<string>(pbj.Special, item =>
+            {
+                Assert.Equal("Hold Peanut Butter", item);
+            });
+        }
+
+        [Fact]
+        public void HoldJellyShouldAppearInSpecial()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            pbj.HoldJelly();
+
+
+            Assert.Collection<string>(pbj.Special, item =>
+            {
+                Assert.Equal("Hold Jelly", item);
+            });
+        }
+
+        [Fact]
+        public void HoldPeanutButterShouldNotifyOfPropertyChange()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+
+            Assert.PropertyChanged(pbj, "Special", () =>
+            {
+                pbj.HoldPeanutButter();
+            });
+        }
+
+        [Fact]
+        public void HoldJellyShouldNotifyOfPropertyChange()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            Assert.PropertyChanged(pbj, "Special", () =>
+            {
+                pbj.HoldJelly();
+            });
+        }
+
+        [Fact]
+        public void PriceShouldNotifyOfPropertyChange()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            Assert.PropertyChanged(pbj, "Price", () =>
+            {
+                pbj.Price = 0.1;
+            });
+        }
+
+        [Fact]
+        public void CaloriesShouldNotifyOfPropertyChange()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            Assert.PropertyChanged(pbj, "Calories", () =>
+            {
+                pbj.Calories = 0;
+            });
+        }
     }
 
 }

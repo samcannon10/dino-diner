@@ -8,7 +8,7 @@ using System.Text;
 using DinoDiner.Menu;
 using Xunit;
 
-namespace DinoDiner.MenuTest.Drinks
+namespace MenuTest.Drinks
 {
     public class TyrannoteaTest
     {
@@ -157,6 +157,111 @@ namespace DinoDiner.MenuTest.Drinks
             Assert.Equal<uint>(16, t.Calories);
             t.Size = Size.Large;
             Assert.Equal<uint>(32, t.Calories);
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            Tyrannotea t = new Tyrannotea();
+            Assert.Empty(t.Special);
+        }
+
+        [Fact]
+        public void AddLemonShouldAppearInSpecial()
+        {
+            Tyrannotea t = new Tyrannotea();
+            t.AddLemon();
+
+            Assert.Collection<string>(t.Special, item =>
+            {
+                Assert.Equal("Add Lemon", item);
+            });
+        }
+
+        [Fact]
+        public void HoldIceShouldAppearInSpecial()
+        {
+            Tyrannotea t = new Tyrannotea();
+            t.HoldIce();
+
+            Assert.Collection<string>(t.Special, item =>
+            {
+                Assert.Equal("Hold Ice", item);
+            });
+        }
+
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        [InlineData("Description")]
+        public void SizeShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Tyrannotea t = new Tyrannotea();
+
+            Assert.PropertyChanged(t, propertyName, () =>
+            {
+                t.Size = Size.Large;
+            });
+        }
+
+        [Theory]
+        [InlineData("Lemon")]
+        [InlineData("Special")]
+        public void AddLemonShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Tyrannotea t = new Tyrannotea();
+
+            Assert.PropertyChanged(t, propertyName, () =>
+            {
+                t.Size = Size.Large;
+            });
+        }
+
+        [Theory]
+        [InlineData("Ice")]
+        [InlineData("Special")]
+        public void HoldIceShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Tyrannotea t = new Tyrannotea();
+
+            Assert.PropertyChanged(t, propertyName, () =>
+            {
+                t.HoldIce();
+            });
+        }
+
+        [Theory]
+        [InlineData("Calories")]
+        [InlineData("Sweet")]
+        public void SweetShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Tyrannotea t = new Tyrannotea();
+
+            Assert.PropertyChanged(t, propertyName, () =>
+            {
+                t.Sweet = true;
+            });
+        }
+
+        [Fact]
+        public void PriceShouldNotifyOfPropertyChange()
+        {
+            Tyrannotea t = new Tyrannotea();
+            Assert.PropertyChanged(t, "Price", () =>
+            {
+                t.Price = 0.1;
+            });
+        }
+
+        [Fact]
+        public void CaloriesShouldNotifyOfPropertyChange()
+        {
+            Tyrannotea t = new Tyrannotea();
+            Assert.PropertyChanged(t, "Calories", () =>
+            {
+                t.Calories = 0;
+            });
         }
     }
 }

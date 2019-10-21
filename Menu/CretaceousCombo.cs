@@ -4,32 +4,81 @@
  */
 
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// A class representing a combo meal
     /// </summary>
-    public class CretaceousCombo : IMenuItem
+    public class CretaceousCombo : IMenuItem, IOrderItem, INotifyPropertyChanged
     {
-        // Backing Variables
+        // Backing Variable
         private Size size;
+        private Entree entree;
+        private Side side;
+        private Drink drink;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
 
         /// <summary>
         /// Gets and sets the entree
         /// </summary>
-        public Entree Entree { get; set; }
+        public Entree Entree
+        { 
+            get
+            {
+                return entree;
+            }
+            set
+            {
+                entree = value;
+                NotifyOfPropertyChanged("Entree");
+                NotifyOfPropertyChanged("Description");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Calories");
+            }
+        }
 
         /// <summary>
         /// Gets and sets the side
         /// </summary>
-        public Side Side { get; set; } = new Fryceritops();
+        public Side Side
+        {
+            get
+            {
+                return side;
+            }
+            set
+            {
+                side = value;
+                NotifyOfPropertyChanged("Side");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Calories");
+            }
+        }
 
         /// <summary>
         /// Gets and sets the drink
         /// </summary>
-        public Drink Drink { get; set; } = new Sodasaurus();
+        public Drink Drink
+        {
+            get
+            {
+                return drink;
+            }
+            set
+            {
+                drink = value;
+                NotifyOfPropertyChanged("Drink");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Calories");
+            }
+        }
 
         /// <summary>
         /// Gets the price of the combo
@@ -64,6 +113,7 @@ namespace DinoDiner.Menu
                 size = value;
                 Drink.Size = value;
                 Side.Size = value;
+                NotifyOfPropertyChanged("Size");
             }
         }
 
@@ -82,14 +132,48 @@ namespace DinoDiner.Menu
             }
         }
 
-        
+        /// <summary>
+        /// Gets description as a string
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Holds any special instructions for preparation
+        /// </summary>
+        public string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                special.AddRange(Entree.Special);
+                special.Add(Side.Description);
+                special.AddRange(Side.Special);
+                special.Add(Drink.Description);
+                special.AddRange(Drink.Special);
+                return special.ToArray();
+            }
+        }
+
+        protected void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         /// <summary>
         /// Constructs a new combo with the specified entree
         /// </summary>
         /// <param name="entree">The entree to use</param>
-        public CretaceousCombo(Entree entree)
+        public CretaceousCombo(Entree e)
         {
-            this.Entree = entree;
+            entree = e;
+            side = new Fryceritops();
+            drink = new Sodasaurus();
         }
 
         /// <summary>

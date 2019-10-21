@@ -8,7 +8,7 @@ using System.Text;
 using Xunit;
 using DinoDiner.Menu;
 
-namespace DinoDiner.MenuTest.Drinks
+namespace MenuTest.Drinks
 {
     public class JurassicJavaTest
     {
@@ -122,5 +122,111 @@ namespace DinoDiner.MenuTest.Drinks
             j.LeaveRoomForCream();
             Assert.True(j.RoomForCream);
         }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            JurassicJava j = new JurassicJava();
+            Assert.Empty(j.Special);
+        }
+
+        [Fact]
+        public void AddIceShouldAppearInSpecial()
+        {
+            JurassicJava j = new JurassicJava();
+            j.AddIce();
+
+            Assert.Collection<string>(j.Special, item =>
+            {
+                Assert.Equal("Add Ice", item);
+            });
+        }
+
+        [Fact]
+        public void RoomForCreamShouldAppearInSpecial()
+        {
+            JurassicJava j = new JurassicJava();
+            j.LeaveRoomForCream();
+
+            Assert.Collection<string>(j.Special, item =>
+            {
+                Assert.Equal("Room for Cream", item);
+            });
+        }
+
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Description")]
+        [InlineData("Calories")]
+        [InlineData("Price")]
+        public void SizeShouldNotifyOfPropertyChange(string propertyName)
+        {
+            JurassicJava j = new JurassicJava();
+
+            Assert.PropertyChanged(j, propertyName, () =>
+            {
+                j.Size = Size.Large;
+            });
+        }
+
+        [Theory]
+        [InlineData("Ice")]
+        [InlineData("Special")]
+        public void AddIceShouldNotifyOfPropertyChange(string propertyName)
+        {
+            JurassicJava j = new JurassicJava();
+
+            Assert.PropertyChanged(j, propertyName, () =>
+            {
+                j.AddIce();
+            });
+        }
+
+        [Theory]
+        [InlineData("RoomForCream")]
+        [InlineData("Special")]
+        public void LeaveRoomForCreamShouldNotifyOfPropertyChange(string propertyName)
+        {
+            JurassicJava j = new JurassicJava();
+
+            Assert.PropertyChanged(j, propertyName, () =>
+            {
+                j.LeaveRoomForCream();
+            });
+        }
+
+        [Theory]
+        [InlineData("Decaf")]
+        [InlineData("Description")]
+        public void DecafShouldNotifyOfPropertyChange(string propertyName)
+        {
+            JurassicJava j = new JurassicJava();
+
+            Assert.PropertyChanged(j, propertyName, () =>
+            {
+                j.Decaf = true;
+            });
+        }
+
+        [Fact]
+        public void PriceShouldNotifyOfPropertyChange()
+        {
+            JurassicJava j = new JurassicJava();
+            Assert.PropertyChanged(j, "Price", () =>
+            {
+                j.Price = 0.1;
+            });
+        }
+
+        [Fact]
+        public void CaloriesShouldNotifyOfPropertyChange()
+        {
+            JurassicJava j = new JurassicJava();
+            Assert.PropertyChanged(j, "Calories", () =>
+            {
+                j.Calories = 0;
+            });
+        }
+
     }
 }

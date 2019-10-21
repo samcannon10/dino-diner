@@ -25,6 +25,10 @@ namespace DinoDiner.Menu
             set
             {
                 size = value;
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
                 switch (size)
                 {
                     case Size.Small:
@@ -65,6 +69,10 @@ namespace DinoDiner.Menu
             Calories = 540;
         }
 
+        /// <summary>
+        /// Default ToString for MezzorellaSticks
+        /// </summary>
+        /// <returns>The side and its size as a string</returns>
         public override string ToString()
         {
             return this.Size + " Mezzorella Sticks";

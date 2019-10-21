@@ -8,7 +8,7 @@ using System.Text;
 using Xunit;
 using DinoDiner.Menu;
 
-namespace DinoDiner.MenuTest.Drinks
+namespace MenuTest.Drinks
 {
     public class SodasaurusTest
     {
@@ -162,6 +162,86 @@ namespace DinoDiner.MenuTest.Drinks
             Sodasaurus soda = new Sodasaurus();
             soda.HoldIce();
             Assert.False(soda.Ice);
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            Assert.Empty(soda.Special);
+        }
+
+        [Fact]
+        public void HoldIceShouldAppearInSpecial()
+        {
+            Sodasaurus s = new Sodasaurus();
+            s.HoldIce();
+
+            Assert.Collection<string>(s.Special, item =>
+            {
+                Assert.Equal("Hold Ice", item);
+            });
+        }
+
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Calories")]
+        [InlineData("Price")]
+        [InlineData("Description")]
+        public void SizeShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Sodasaurus s = new Sodasaurus();
+
+            Assert.PropertyChanged(s, propertyName, () =>
+            {
+                s.Size = Size.Large;
+            });
+        }
+
+        [Theory]
+        [InlineData("Ice")]
+        [InlineData("Special")]
+        public void HoldIceShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Sodasaurus s = new Sodasaurus();
+
+            Assert.PropertyChanged(s, propertyName, () =>
+            {
+                s.HoldIce();
+            });
+        }
+
+        [Theory]
+        [InlineData("Flavor")]
+        [InlineData("Description")]
+        public void FlavorShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Sodasaurus s = new Sodasaurus();
+
+            Assert.PropertyChanged(s, propertyName, () =>
+            {
+                s.Flavor = SodasaurusFlavor.Cherry;
+            });
+        }
+
+        [Fact]
+        public void PriceShouldNotifyOfPropertyChange()
+        {
+            Sodasaurus s = new Sodasaurus();
+            Assert.PropertyChanged(s, "Price", () =>
+            {
+                s.Price = 0.1;
+            });
+        }
+
+        [Fact]
+        public void CaloriesShouldNotifyOfPropertyChange()
+        {
+            Sodasaurus s = new Sodasaurus();
+            Assert.PropertyChanged(s, "Calories", () =>
+            {
+                s.Calories = 0;
+            });
         }
     }
 }

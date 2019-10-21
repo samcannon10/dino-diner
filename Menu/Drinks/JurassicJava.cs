@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
@@ -13,6 +14,9 @@ namespace DinoDiner.Menu
     /// </summary>
     public class JurassicJava : Drink
     {
+        protected bool roomForCream;
+        protected bool decaf;
+
         /// <summary>
         /// Property for size enum for this drink.
         /// Sets price and calories accordingly
@@ -26,6 +30,10 @@ namespace DinoDiner.Menu
             set
             {
                 size = value;
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Description");
                 switch(size)
                 {
                     case Size.Small:
@@ -58,23 +66,61 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Property to leave room for cream or not
         /// </summary>
-        public bool RoomForCream { get; set; }
+        public bool RoomForCream
+        {
+            get
+            {
+                return roomForCream;
+            }
+            set
+            {
+                roomForCream = value;
+                NotifyOfPropertyChanged("RoomForCream");
+                NotifyOfPropertyChanged("Special");
+            }
+        }
         
         /// <summary>
         /// Property to make coffee decaf or not
         /// </summary>
-        public bool Decaf { get; set; }
+        public bool Decaf
+        {
+            get
+            {
+                return decaf;
+            }
+            set
+            {
+                decaf = value;
+                NotifyOfPropertyChanged("Decaf");
+                if (decaf) NotifyOfPropertyChanged("Description");
+            }
+        }
+
+        /// <summary>
+        /// Holds any special instructions for preparation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (RoomForCream) special.Add("Room for Cream");
+                if (Ice) special.Add("Add Ice");
+                return special.ToArray();
+            }
+        }
 
         /// <summary>
         /// Constructor for JurassicJava Drink
         /// </summary>
         public JurassicJava()
         {
-            Calories = 2;
-            Price = 0.59;
-            Ice = false;
-            RoomForCream = false;
-            Decaf = false;
+            calories = 2;
+            price = 0.59;
+            ice = false;
+            roomForCream = false;
+            decaf = false;
         }
 
         /// <summary>
@@ -83,6 +129,7 @@ namespace DinoDiner.Menu
         public void LeaveRoomForCream()
         {
             RoomForCream = true;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -91,6 +138,8 @@ namespace DinoDiner.Menu
         public void AddIce()
         {
             Ice = true;
+            NotifyOfPropertyChanged("Ice");
+            NotifyOfPropertyChanged("Special");
         }
 
 

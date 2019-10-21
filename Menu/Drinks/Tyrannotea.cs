@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
@@ -13,8 +14,9 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Tyrannotea : Drink
     {
-        // backing variable for sweet tea
-        private bool sweet = false;
+        // backing variables
+        private bool sweet;
+        protected bool lemon;
 
         /// <summary>
         /// Property for size enum for this 
@@ -29,6 +31,10 @@ namespace DinoDiner.Menu
             set
             {
                 size = value;
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Description");
                 switch(size)
                 {
                     case Size.Small:
@@ -75,6 +81,8 @@ namespace DinoDiner.Menu
             set
             {
                 sweet = value;
+                NotifyOfPropertyChanged("Sweet");
+                NotifyOfPropertyChanged("Calories");
                 if (sweet)
                 {
                     switch (Size)
@@ -112,18 +120,42 @@ namespace DinoDiner.Menu
         /// Property for if lemon is included
         /// or not
         /// </summary>
-        public bool Lemon { get; set; }
+        public bool Lemon
+        {
+            get
+            {
+                return lemon;
+            }
+            set
+            {
+                lemon = value;
+                NotifyOfPropertyChanged("Lemon");
+            }
+        }
+
+        /// <summary>
+        /// Holds any special instructions for preparation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (Lemon) special.Add("Add Lemon");
+                if (!Ice) special.Add("Hold Ice");
+                return special.ToArray();
+            }
+        }
 
         /// <summary>
         /// Constructor for Tyrannotea Drink
         /// </summary>
         public Tyrannotea()
         {
-            Price = .99;
-            Calories = 8;
-            Ice = true;
-            Lemon = false;
-            Sweet = false;
+            price = .99;
+            calories = 8;
+            lemon = false;
+            sweet = false;
         }
 
         /// <summary>
@@ -132,6 +164,7 @@ namespace DinoDiner.Menu
         public void AddLemon()
         {
             Lemon = true;
+            NotifyOfPropertyChanged("Special");
         }
 
 

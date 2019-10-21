@@ -25,6 +25,10 @@ namespace DinoDiner.Menu
             set
             {
                 size = value;
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
                 switch (size)
                 {
                     case Size.Small:
@@ -65,6 +69,10 @@ namespace DinoDiner.Menu
             Calories = 352;
         }
 
+        /// <summary>
+        /// Default ToString for Triceritots
+        /// </summary>
+        /// <returns>The side and its size as a stirng</returns>
         public override string ToString()
         {
             return this.Size + " Triceritots";

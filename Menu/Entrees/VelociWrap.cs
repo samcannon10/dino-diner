@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
@@ -42,6 +43,21 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
+        /// Holds any special instructions for preparation
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!dressing) special.Add("Hold Dressing");
+                if (!lettuce) special.Add("Hold Lettuce");
+                if (!cheese) special.Add("Hold Cheese");
+                return special.ToArray();
+            }
+        }
+
+        /// <summary>
         /// Constructor for Velociwrap entree
         /// </summary>
         public VelociWrap()
@@ -56,6 +72,7 @@ namespace DinoDiner.Menu
         public void HoldDressing()
         {
             this.dressing = false;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -64,6 +81,7 @@ namespace DinoDiner.Menu
         public void HoldLettuce()
         {
             this.lettuce = false;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -72,6 +90,7 @@ namespace DinoDiner.Menu
         public void HoldCheese()
         {
             this.cheese = false;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
