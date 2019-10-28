@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Menu;
 
 namespace PointOfSale
 {
@@ -30,6 +31,111 @@ namespace PointOfSale
         public EntreeSelection()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Adds SteakosaurusBurger to current Order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void AddSteakosaurusBurger(object sender, RoutedEventArgs args)
+        {
+            if(DataContext is Order order)
+            {
+                order.Items.Add(new SteakosaurusBurger());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
+        }
+
+        /// <summary>
+        /// Adds TRexKingBurger to current Order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void AddTRexKingBurger(object sender, RoutedEventArgs args)
+        {
+            if(DataContext is Order order)
+            {
+                order.Items.Add(new TRexKingBurger());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
+        }
+
+        /// <summary>
+        /// Adds Prehistoric PBJ to current Order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void AddPrehistoricPBJ(object sender, RoutedEventArgs args)
+        {
+            if(DataContext is Order order)
+            {
+                order.Items.Add(new PrehistoricPBJ());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
+        }
+
+        /// <summary>
+        /// Adds DinoNuggets to current Order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void AddDinoNuggets(object sender, RoutedEventArgs args)
+        {
+            if(DataContext is Order order)
+            {
+                order.Items.Add(new DinoNuggets());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
+        }
+
+        /// <summary>
+        /// Adds Brontowurst to current Order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void AddBrontowurst(object sender, RoutedEventArgs args)
+        {
+            if(DataContext is Order order)
+            {
+                order.Items.Add(new Brontowurst());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
+        }
+
+        /// <summary>
+        /// Adds Pterodactyl Wings to current Order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void AddPterodactylWings(object sender, RoutedEventArgs args)
+        {
+            if(DataContext is Order order)
+            {
+                order.Items.Add(new Brontowurst());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
+        }
+
+        /// <summary>
+        /// Adds VelociWrap to current order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void AddVelociWrap(object sender, RoutedEventArgs args)
+        {
+            if(DataContext is Order order)
+            {
+                order.Items.Add(new VelociWrap());
+                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
     }
 }

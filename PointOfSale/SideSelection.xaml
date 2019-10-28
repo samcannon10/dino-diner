@@ -23,16 +23,16 @@
         
         <TextBlock Text="Add to Order" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <Button Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,5,10">Triceritots</Button>
-        <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,10,10">Friceritops</Button>
-        <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,5,10">Mezzorella Sticks</Button>
-        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,10,10">Meteor Mac and Cheese</Button>
+        <Button Click="AddTriceritots" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,5,10">Triceritots</Button>
+        <Button Click="AddFryceritops" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,10,10">Fryceritops</Button>
+        <Button Click="AddMezzorellaSticks" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,5,10">Mezzorella Sticks</Button>
+        <Button Click="AddMacAndCheese" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,10,10">Meteor Mac and Cheese</Button>
 
         <TextBlock Text="Size" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Stretch" FontSize="20" Margin="0,10,0,0"/>
-        <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-            <RadioButton Content="Small" GroupName="SideSize"  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
-            <RadioButton Content="Medium" GroupName="SideSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
-            <RadioButton Content="Large" GroupName="SideSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+        <StackPanel Name="SizePanel" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <RadioButton Name="SmallButton" Click="SetSmall" Content="Small" GroupName="SideSize"  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Name="MediumButton" Click="SetMedium" Content="Medium" GroupName="SideSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Name="LargeButton" Click="SetLarge" Content="Large" GroupName="SideSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
         </StackPanel>
     </Grid>
 </Page>

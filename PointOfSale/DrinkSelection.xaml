@@ -31,18 +31,19 @@
         
         <TextBlock Text="Size" FontSize="16" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-            <RadioButton Content="Small" GroupName="DrinkSize"  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
-            <RadioButton Content="Medium" GroupName="DrinkSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
-            <RadioButton Content="Large" GroupName="DrinkSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Name ="SmallButton" Click="SetSmall" Content="Small" GroupName="DrinkSize"  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Name="MediumButton" Click="SetMedium" Content="Medium" GroupName="DrinkSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Name="LargeButton" Click="SetLarge" Content="Large" GroupName="DrinkSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
         </StackPanel>
 
         <TextBlock Text="Special" FontSize="16" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
         <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
             <Button Click="ChooseFlavor" Name="FlavorButton" Content="Flavor" Margin="10,25,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
-            <Button Name="SweetButton" Content="Sweet" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
-            <Button Name="DecafButton" Content="Decaf" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
-            <Button Name="LemonButton" Content="Add Lemon" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
-            <Button Name="IceButton" Content="Hold Ice" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Click="MakeSweet" Name="SweetButton" Content="Sweet" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Click ="AddDecaf" Name="DecafButton" Content="Decaf" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Click="AddLemon" Name="LemonButton" Content="Add Lemon" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Click="HoldIce" Name="IceButton" Content="Hold Ice" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
+            <Button Click="ReturnToMenuSelection" Name="DoneButton" Content="Done" Margin="10,5,10,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50"/>
         </StackPanel>
     </Grid>
 </Page>

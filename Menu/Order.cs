@@ -5,6 +5,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Text;
 
 namespace DinoDiner.Menu
@@ -12,7 +14,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class for Order objects
     /// </summary>
-    public class Order
+    public class Order : INotifyPropertyChanged
     {
         /// <summary>
         /// Items included in this Order
@@ -65,6 +67,22 @@ namespace DinoDiner.Menu
         {
             Items = new ObservableCollection<IOrderItem>();
             SalesTaxRate = 0.0825;
+
+            this.Items.CollectionChanged += this.OnCollectionChanged;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
+        {
+            NotifyOfPropertyChanged("SubtotalCost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("TotalCost");
         }
     }
 }

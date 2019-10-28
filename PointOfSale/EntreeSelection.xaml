@@ -35,37 +35,37 @@
 
         <TextBlock Text="Add to Order" VerticalAlignment="Center" TextAlignment="Center"  Grid.Column="1" Grid.ColumnSpan="2"/>
 
-        <Button Grid.Row ="1"  Grid.Column="0" Margin="10,10,5,5" Style="{StaticResource ButtonFormat}">
+        <Button Click="AddSteakosaurusBurger" Grid.Row ="1"  Grid.Column="0" Margin="10,10,5,5" Style="{StaticResource ButtonFormat}">
             <Button.Content>
                 <TextBlock Style="{StaticResource TextFormat}" Text="Steakosaurus Burger"/>
             </Button.Content>
         </Button>
-        <Button Grid.Row ="1"  Grid.Column="1" Style="{StaticResource ButtonFormat}" Margin="5,10,5,5">
+        <Button Click="AddTRexKingBurger" Grid.Row ="1"  Grid.Column="1" Style="{StaticResource ButtonFormat}" Margin="5,10,5,5">
             <Button.Content>
                 <TextBlock Style="{StaticResource TextFormat}" Text="T-Rex King Burger"/>
             </Button.Content>
         </Button>
-        <Button Grid.Row ="1"  Grid.Column="2" Style="{StaticResource ButtonFormat}" Margin="5,10,5,5">
+        <Button Click="AddPrehistoricPBJ" Grid.Row ="1"  Grid.Column="2" Style="{StaticResource ButtonFormat}" Margin="5,10,5,5">
             <Button.Content>
                 <TextBlock Style="{StaticResource TextFormat}" Text="Prehistoric PB&amp;J"/>
             </Button.Content>
         </Button>
-        <Button Grid.Row ="1"  Grid.Column="3" Style="{StaticResource ButtonFormat}" Margin="5,10,10,5">
+        <Button Click="AddDinoNuggets"  Grid.Row ="1"  Grid.Column="3" Style="{StaticResource ButtonFormat}" Margin="5,10,10,5">
             <Button.Content>
                 <TextBlock Style="{StaticResource TextFormat}" Text="Dino-Nuggets"/>
             </Button.Content>
         </Button>
-        <Button Grid.Row ="2"  Grid.Column="0" Style="{StaticResource ButtonFormat}" Margin="10,5,5,10">
+        <Button Click="AddBrontowurst" Grid.Row ="2"  Grid.Column="0" Style="{StaticResource ButtonFormat}" Margin="10,5,5,10">
             <Button.Content>
                 <TextBlock Style="{StaticResource TextFormat}" Text="Brontowurst"/>
             </Button.Content>
         </Button>
-        <Button Grid.Row ="2"  Grid.Column="1" Style="{StaticResource ButtonFormat}" Margin="5,5,5,10">
+        <Button Click="AddPterodactylWings" Grid.Row ="2"  Grid.Column="1" Style="{StaticResource ButtonFormat}" Margin="5,5,5,10">
             <Button.Content>
                 <TextBlock Style="{StaticResource TextFormat}" Text="Pterodactyl Wings"/>
             </Button.Content>
         </Button>
-        <Button Grid.Row ="2"  Grid.Column="2" Style="{StaticResource ButtonFormat}" Margin="5,5,5,10">
+        <Button Click="AddVelociWrap" Grid.Row ="2"  Grid.Column="2" Style="{StaticResource ButtonFormat}" Margin="5,5,5,10">
             <Button.Content>
                 <TextBlock Style="{StaticResource TextFormat}" Text="Veloci-Wrap"/>
             </Button.Content>
