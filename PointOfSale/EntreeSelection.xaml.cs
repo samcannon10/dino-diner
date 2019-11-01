@@ -42,7 +42,7 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
-                order.Items.Add(new SteakosaurusBurger());
+                order.Add(new SteakosaurusBurger());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 NavigationService.Navigate(new MenuCategorySelection());
             }
@@ -57,7 +57,7 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
-                order.Items.Add(new TRexKingBurger());
+                order.Add(new TRexKingBurger());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 NavigationService.Navigate(new MenuCategorySelection());
             }
@@ -72,7 +72,7 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
-                order.Items.Add(new PrehistoricPBJ());
+                order.Add(new PrehistoricPBJ());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 NavigationService.Navigate(new MenuCategorySelection());
             }
@@ -87,7 +87,7 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
-                order.Items.Add(new DinoNuggets());
+                order.Add(new DinoNuggets());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 NavigationService.Navigate(new MenuCategorySelection());
             }
@@ -102,7 +102,7 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
-                order.Items.Add(new Brontowurst());
+                order.Add(new Brontowurst());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 NavigationService.Navigate(new MenuCategorySelection());
             }
@@ -117,7 +117,7 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
-                order.Items.Add(new Brontowurst());
+                order.Add(new Brontowurst());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 NavigationService.Navigate(new MenuCategorySelection());
             }
@@ -132,7 +132,7 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
-                order.Items.Add(new VelociWrap());
+                order.Add(new VelociWrap());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 NavigationService.Navigate(new MenuCategorySelection());
             }
