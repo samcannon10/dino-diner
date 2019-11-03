@@ -68,7 +68,7 @@ namespace PointOfSale
 
             if (DataContext is Order order)
             {
-                order.Items.Add(new Water());
+                order.Add(new Water());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
             }
         }
@@ -92,7 +92,7 @@ namespace PointOfSale
 
             if (DataContext is Order order)
             {
-                order.Items.Add(new Sodasaurus());
+                order.Add(new Sodasaurus());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
             }
         }
@@ -117,7 +117,7 @@ namespace PointOfSale
 
             if (DataContext is Order order)
             {
-                order.Items.Add(new JurassicJava());
+                order.Add(new JurassicJava());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
             }
         }
@@ -140,7 +140,7 @@ namespace PointOfSale
 
             if (DataContext is Order order)
             {
-                order.Items.Add(new Tyrannotea());
+                order.Add(new Tyrannotea());
                 CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
             }
         }

@@ -16,15 +16,25 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Order : INotifyPropertyChanged
     {
+        private List<IOrderItem> items;
+
         /// <summary>
         /// Items included in this Order
         /// </summary>
-        public ObservableCollection<IOrderItem> Items { get; set; }
+        public IOrderItem[] Items
+        {
+            get
+            {
+                return items.ToArray();
+            }      
+        }
+
 
         /// <summary>
         /// Cost of order before tax
         /// </summary>
-        public double SubtotalCost {
+        public double SubtotalCost
+        {
             get
             {
                 double total = 0;
@@ -63,12 +73,25 @@ namespace DinoDiner.Menu
             }
         }
 
+        /// <summary>
+        /// Constructor for Order item
+        /// </summary>
         public Order()
         {
-            Items = new ObservableCollection<IOrderItem>();
+            items = new List<IOrderItem>();
             SalesTaxRate = 0.0825;
 
             this.Items.CollectionChanged += this.OnCollectionChanged;
+        }
+
+        public void Add(IOrderItem item)
+        {
+            items.Add(item);
+        }
+
+        public void Remove(IOrderItem item)
+        {
+            items.Remove(item);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
