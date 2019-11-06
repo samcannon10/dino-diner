@@ -23,17 +23,19 @@
         <TextBlock Text="Add to Order" VerticalAlignment="Center" TextAlignment="Center" Grid.ColumnSpan="2"/>
 
         <TextBlock Text="Side" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontSize="16"/>
-        <Button Click = "SelectSide" Margin="10,25,5,5" Grid.Row="1" Grid.Column="0" Content="Friceritops"/>
+        <Button Click = "SelectSide" Margin="10,25,5,5" Grid.Row="1" Grid.Column="0" Content="Side"/>
 
         <TextBlock Text="Drink" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" FontSize="16"/>
-        <Button Click = "SelectDrink" Margin="5,25,10,5" Grid.Row="1" Grid.Column="1" Content="Sodasaurus"/>
+        <Button Click = "SelectDrink" Margin="5,25,10,5" Grid.Row="1" Grid.Column="1" Content="Drink"/>
 
         <TextBlock Text="Size" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontSize="16"/>
 
         <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-            <RadioButton Content="Small" GroupName="ComboSize"  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
-            <RadioButton Content="Medium" GroupName="ComboSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
-            <RadioButton Content="Large" GroupName="ComboSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Name="SmallButton" Click="SetSmall" Content="Small" GroupName="ComboSize"  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Name="MediumButton" Click="SetMedium" Content="Medium" GroupName="ComboSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
+            <RadioButton Name="LargeButton" Click="SetLarge" Content="Large" GroupName="ComboSize" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="32" Width="152"/>
         </StackPanel>
+
+        <Button Click="ReturnToMenuSelection" Content="Done" Grid.Row="2" Grid.Column="1" Margin="5,5,10,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </Page>

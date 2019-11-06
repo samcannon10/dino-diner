@@ -35,6 +35,7 @@ namespace DinoDiner.Menu
                 NotifyOfPropertyChanged("Calories");
                 NotifyOfPropertyChanged("Price");
                 NotifyOfPropertyChanged("Description");
+                NotifyOfPropertyChanged("Special");
                 switch(size)
                 {
                     case Size.Small:
@@ -81,8 +82,6 @@ namespace DinoDiner.Menu
             set
             {
                 sweet = value;
-                NotifyOfPropertyChanged("Sweet");
-                NotifyOfPropertyChanged("Calories");
                 if (sweet)
                 {
                     switch (Size)
@@ -113,6 +112,10 @@ namespace DinoDiner.Menu
                             break;
                     }
                 }
+
+                NotifyOfPropertyChanged("Sweet");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -130,6 +133,7 @@ namespace DinoDiner.Menu
             {
                 lemon = value;
                 NotifyOfPropertyChanged("Lemon");
+                NotifyOfPropertyChanged("Special");
             }
         }
 
@@ -164,6 +168,7 @@ namespace DinoDiner.Menu
         public void AddLemon()
         {
             Lemon = true;
+            NotifyOfPropertyChanged("Lemon");
             NotifyOfPropertyChanged("Special");
         }
 

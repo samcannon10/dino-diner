@@ -17,7 +17,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Backing variable for drink size
         /// </summary>
-        protected Size size;
+        protected Size size = Size.Small;
         protected double price;
         protected uint calories;
         protected bool ice = true;

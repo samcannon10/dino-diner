@@ -26,12 +26,15 @@ namespace PointOfSale
     public partial class FlavorSelection : Page
     {
         protected Sodasaurus soda;
+        private bool isCombo;
+
         /// <summary>
         /// Initializes FlavorSelection Page
         /// </summary>
-        public FlavorSelection()
+        public FlavorSelection(bool combo)
         {
             InitializeComponent();
+            isCombo = combo;
         }
 
         /// <summary>
@@ -46,8 +49,12 @@ namespace PointOfSale
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
                 {
                     soda.Flavor = SodasaurusFlavor.Cola;
-                    NavigationService.Navigate(new DrinkSelection());
                 }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    (combo.Drink as Sodasaurus).Flavor = SodasaurusFlavor.Cola;
+                }
+                NavigationService.Navigate(new DrinkSelection(isCombo));
             }
         }
 
@@ -63,8 +70,12 @@ namespace PointOfSale
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
                 {
                     soda.Flavor = SodasaurusFlavor.Vanilla;
-                    NavigationService.Navigate(new DrinkSelection());
                 }
+                else if(CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    (combo.Drink as Sodasaurus).Flavor = SodasaurusFlavor.Vanilla;
+                }
+                NavigationService.Navigate(new DrinkSelection(isCombo));
             }
         }
 
@@ -80,8 +91,12 @@ namespace PointOfSale
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
                 {
                     soda.Flavor = SodasaurusFlavor.RootBeer;
-                    NavigationService.Navigate(new DrinkSelection());
                 }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    (combo.Drink as Sodasaurus).Flavor = SodasaurusFlavor.RootBeer;
+                }
+                NavigationService.Navigate(new DrinkSelection(isCombo));
             }
         }
 
@@ -97,8 +112,12 @@ namespace PointOfSale
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
                 {
                     soda.Flavor = SodasaurusFlavor.Chocolate;
-                    NavigationService.Navigate(new DrinkSelection());
                 }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    (combo.Drink as Sodasaurus).Flavor = SodasaurusFlavor.Chocolate;
+                }
+                NavigationService.Navigate(new DrinkSelection(isCombo));
             }
         }
 
@@ -114,8 +133,12 @@ namespace PointOfSale
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
                 {
                     soda.Flavor = SodasaurusFlavor.Orange;
-                    NavigationService.Navigate(new DrinkSelection());
                 }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    (combo.Drink as Sodasaurus).Flavor = SodasaurusFlavor.Orange;
+                }
+                NavigationService.Navigate(new DrinkSelection(isCombo));
             }
         }
 
@@ -131,8 +154,12 @@ namespace PointOfSale
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
                 {
                     soda.Flavor = SodasaurusFlavor.Cherry;
-                    NavigationService.Navigate(new DrinkSelection());
                 }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    (combo.Drink as Sodasaurus).Flavor = SodasaurusFlavor.Cherry;
+                }
+                NavigationService.Navigate(new DrinkSelection(isCombo));
             }
         }
 
@@ -148,8 +175,12 @@ namespace PointOfSale
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
                 {
                     soda.Flavor = SodasaurusFlavor.Lime;
-                    NavigationService.Navigate(new DrinkSelection());
                 }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    (combo.Drink as Sodasaurus).Flavor = SodasaurusFlavor.Lime;
+                }
+                NavigationService.Navigate(new DrinkSelection(isCombo));
             }
         }
     }

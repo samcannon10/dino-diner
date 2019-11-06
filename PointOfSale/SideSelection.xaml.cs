@@ -25,12 +25,15 @@ namespace PointOfSale
     /// </summary>
     public partial class SideSelection : Page
     {
+        private bool isCombo;
+
         /// <summary>
         /// Initializes SideSelection Page
         /// </summary>
-        public SideSelection()
+        public SideSelection(bool combo)
         {
             InitializeComponent();
+            isCombo = combo;
         }
 
         /// <summary>
@@ -42,8 +45,16 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
-                order.Add(new Fryceritops());
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                if (isCombo == false)
+                {
+                    order.Add(new Fryceritops());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    combo.Side = new Fryceritops();
+                    NavigationService.Navigate(new CustomizeCombo());
+                }
             }
         }
 
@@ -56,8 +67,16 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Add(new Triceritots());
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                if (isCombo == false)
+                {
+                    order.Add(new Triceritots());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    combo.Side = new Triceritots();
+                    NavigationService.Navigate(new CustomizeCombo());
+                }
             }
         }
 
@@ -70,8 +89,16 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Add(new MezzorellaSticks());
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                if (isCombo == false)
+                {
+                    order.Add(new MezzorellaSticks());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if(CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    combo.Side = new MezzorellaSticks();
+                    NavigationService.Navigate(new CustomizeCombo());
+                }
             }
         }
 
@@ -84,8 +111,16 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Add(new MeteorMacAndCheese());
-                CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                if (isCombo == false)
+                {
+                    order.Add(new MeteorMacAndCheese());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    combo.Side = new MeteorMacAndCheese();
+                    NavigationService.Navigate(new CustomizeCombo());
+                }
             }
         }
 
@@ -102,7 +137,13 @@ namespace PointOfSale
                 {
                     LargeButton.IsChecked = true;
                     side.Size = DinoDiner.Menu.Size.Large;
-                    NavigationService.Navigate(new MenuCategorySelection());
+                    if (isCombo == true) NavigationService.Navigate(new CustomizeCombo());
+                    else NavigationService.Navigate(new MenuCategorySelection());
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    UpdateSize();
+                    NavigationService.Navigate(new CustomizeCombo());
                 }
             }
         }
@@ -120,7 +161,13 @@ namespace PointOfSale
                 {
                     MediumButton.IsChecked = true;
                     side.Size = DinoDiner.Menu.Size.Medium;
-                    NavigationService.Navigate(new MenuCategorySelection());
+                    if (isCombo == true) NavigationService.Navigate(new CustomizeCombo());
+                    else NavigationService.Navigate(new MenuCategorySelection());
+                }
+                else if(CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    UpdateSize();
+                    NavigationService.Navigate(new CustomizeCombo());
                 }
             }
         }
@@ -138,7 +185,13 @@ namespace PointOfSale
                 {
                     SmallButton.IsChecked = true;
                     side.Size = DinoDiner.Menu.Size.Small;
-                    NavigationService.Navigate(new MenuCategorySelection());
+                    if (isCombo == true) NavigationService.Navigate(new CustomizeCombo());
+                    else NavigationService.Navigate(new MenuCategorySelection());
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    UpdateSize();
+                    NavigationService.Navigate(new CustomizeCombo());
                 }
             }
         }
@@ -156,6 +209,12 @@ namespace PointOfSale
                     if (side.Size == DinoDiner.Menu.Size.Small) SmallButton.IsChecked = true;
                     else if (side.Size == DinoDiner.Menu.Size.Medium) MediumButton.IsChecked = true;
                     else if (side.Size == DinoDiner.Menu.Size.Large) LargeButton.IsChecked = true;
+                }
+                else if(CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    if(combo.Size == DinoDiner.Menu.Size.Small) SmallButton.IsChecked = true;
+                    else if (combo.Size == DinoDiner.Menu.Size.Medium) MediumButton.IsChecked = true;
+                    else if (combo.Size == DinoDiner.Menu.Size.Large) LargeButton.IsChecked = true;
                 }
                 else
                 {

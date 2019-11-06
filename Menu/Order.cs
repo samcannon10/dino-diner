@@ -16,7 +16,8 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Order : INotifyPropertyChanged
     {
-        private List<IOrderItem> items;
+        private ObservableCollection<IOrderItem> items;
+        /*
 
         /// <summary>
         /// Items included in this Order
@@ -27,6 +28,14 @@ namespace DinoDiner.Menu
             {
                 return items.ToArray();
             }      
+        }*/
+
+        public ObservableCollection<IOrderItem> Items
+        {
+            get
+            {
+                return items;
+            }
         }
 
 
@@ -78,20 +87,37 @@ namespace DinoDiner.Menu
         /// </summary>
         public Order()
         {
-            items = new List<IOrderItem>();
             SalesTaxRate = 0.0825;
-
-            this.Items.CollectionChanged += this.OnCollectionChanged;
+            items = new ObservableCollection<IOrderItem>();
         }
 
         public void Add(IOrderItem item)
         {
             items.Add(item);
+            NotifyOfPropertyChanged("Items");
+            NotifyOfPropertyChanged("SubtotalCost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("TotalCost");
+            item.PropertyChanged += OnPropertyChanged;
         }
 
-        public void Remove(IOrderItem item)
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            items.Remove(item);
+            NotifyOfPropertyChanged("Items");
+            NotifyOfPropertyChanged("SubtotalCost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("TotalCost");
+        }
+
+        public bool Remove(IOrderItem item)
+        {
+            bool remove = items.Remove(item);
+            item.PropertyChanged -= OnPropertyChanged;
+            NotifyOfPropertyChanged("Items");
+            NotifyOfPropertyChanged("SubtotalCost");
+            NotifyOfPropertyChanged("SalesTaxCost");
+            NotifyOfPropertyChanged("TotalCost");
+            return remove;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

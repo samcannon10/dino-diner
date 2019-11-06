@@ -214,7 +214,7 @@ namespace MenuTest.Drinks
 
             Assert.PropertyChanged(t, propertyName, () =>
             {
-                t.Size = Size.Large;
+                t.AddLemon();
             });
         }
 

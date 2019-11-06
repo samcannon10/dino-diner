@@ -28,7 +28,7 @@
         <ListBox Grid.Row="1" 
                  Grid.ColumnSpan="2"
                  Name="OrderList"
-                 ItemsSource="{Binding Path=items, UpdateSourceTrigger=PropertyChanged}"
+                 ItemsSource="{Binding Path=Items, UpdateSourceTrigger=PropertyChanged}"
                  IsSynchronizedWithCurrentItem="True">
             <ListBox.ItemTemplate>
                 <DataTemplate>

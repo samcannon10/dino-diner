@@ -34,11 +34,8 @@ namespace DinoDiner.Menu
             set
             {
                 entree = value;
+                entree.PropertyChanged += ItemUpdated;
                 NotifyOfPropertyChanged("Entree");
-                NotifyOfPropertyChanged("Description");
-                NotifyOfPropertyChanged("Price");
-                NotifyOfPropertyChanged("Special");
-                NotifyOfPropertyChanged("Calories");
             }
         }
 
@@ -54,10 +51,8 @@ namespace DinoDiner.Menu
             set
             {
                 side = value;
+                side.PropertyChanged += ItemUpdated;
                 NotifyOfPropertyChanged("Side");
-                NotifyOfPropertyChanged("Price");
-                NotifyOfPropertyChanged("Special");
-                NotifyOfPropertyChanged("Calories");
             }
         }
 
@@ -73,10 +68,8 @@ namespace DinoDiner.Menu
             set
             {
                 drink = value;
+                drink.PropertyChanged += ItemUpdated;
                 NotifyOfPropertyChanged("Drink");
-                NotifyOfPropertyChanged("Price");
-                NotifyOfPropertyChanged("Special");
-                NotifyOfPropertyChanged("Calories");
             }
         }
 
@@ -114,6 +107,10 @@ namespace DinoDiner.Menu
                 Drink.Size = value;
                 Side.Size = value;
                 NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Description");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
             }
         }
 
@@ -166,14 +163,30 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
+        /// Notifies of changes to items in this combo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void ItemUpdated(object sender, PropertyChangedEventArgs args)
+        {
+            NotifyOfPropertyChanged("Description");
+            NotifyOfPropertyChanged("Price");
+            NotifyOfPropertyChanged("Special");
+            NotifyOfPropertyChanged("Calories");
+        }
+
+        /// <summary>
         /// Constructs a new combo with the specified entree
         /// </summary>
         /// <param name="entree">The entree to use</param>
         public CretaceousCombo(Entree e)
         {
             entree = e;
+            entree.PropertyChanged += ItemUpdated;
             side = new Fryceritops();
+            side.PropertyChanged += ItemUpdated;
             drink = new Sodasaurus();
+            drink.PropertyChanged += ItemUpdated;
         }
 
         /// <summary>

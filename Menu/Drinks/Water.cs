@@ -32,6 +32,7 @@ namespace DinoDiner.Menu
                 NotifyOfPropertyChanged("Description");
                 NotifyOfPropertyChanged("Price");
                 NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Special");
             }
         }
 
@@ -87,6 +88,7 @@ namespace DinoDiner.Menu
             price = 0.10;
             calories = 0;
             lemon = false;
+            size = Size.Small;
         }
 
         /// <summary>

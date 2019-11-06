@@ -19,7 +19,7 @@ namespace DinoDiner.Menu
 
     public abstract class Side : IMenuItem, IOrderItem, INotifyPropertyChanged
     {
-        protected Size size;
+        protected Size size = Size.Small;
         protected double price;
         protected uint calories;
 
