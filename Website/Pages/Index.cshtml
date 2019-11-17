@@ -1,7 +1,16 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+	ViewData["Title"] = "Home page";
 }
 
-<h1>Hello World</h1>
+<h1 class="title">Dino-Diner</h1>
+
+<div style="text-align: center">
+	<a asp-page="Index" class="active">Home</a>
+	<a asp-page="About">About</a>
+	<a asp-page="Menu">Menu</a>
+	<a asp-page="Privacy">Privacy Policy</a>
+</div>
+
+<img src="~/images/DinoDiner-24.png" alt="Dino-Diner"/>
