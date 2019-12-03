@@ -21,3 +21,20 @@ body
 .menu-item {
 
 }
+
+.split {
+	height: 100%;
+	width: 50%;
+	position: fixed;
+	top: 0;
+	overflow-x: hidden;
+	z-index: 1;
+}
+
+.left {
+	left: 0;
+}
+
+.right {
+	right: 0;
+}

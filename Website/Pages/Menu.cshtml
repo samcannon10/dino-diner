@@ -13,72 +13,125 @@
 	<a asp-page="Privacy">Privacy Policy</a>
 </div>
 
-<h2>Combos</h2>
-@foreach (DinoDiner.Menu.CretaceousCombo c in Model.menu.AvailableCombos)
-{
-	<div class="menu-item">
-		@c.ToString() <br />
-		Price: $@c.Price <br />
-		Calories: @c.Calories <br />
-		Ingredients: <br />
-		@foreach (string s in c.Ingredients)
-		{
-			@s <br />
-		}
-	</div>
+<form method="post" class="split right">
+	<input type="text" name="search" id="search"/>
+	<input type="submit" value="Search and Filter" />
 	<br />
-}
-<br />
 
-<h2>Entrees</h2>
-@foreach (DinoDiner.Menu.Entree e in Model.menu.AvailableEntrees)
-{
-	<div class="menu-item">
-		@e.ToString() <br />
-		Price: $@e.Price <br />
-		Calories: @e.Calories <br />
-		Ingredients: <br />
-		@foreach (string s in e.Ingredients)
-		{
-			@s <br />
-		}
-	</div>
+	
+	Menu Category <br />
+	<label>
+		<input type="checkbox" class="menu-category" name="menuCategory" value="Combo" checked="@Model.menuCategory.Contains("Combo")"/>
+		Combo
+	</label>
+	<label>
+		<input type="checkbox" class="menu-category" name="menuCategory" value="Entree" checked="@Model.menuCategory.Contains("Entree")"/>
+		Entree
+	</label>
+	<label>
+		<input type="checkbox" class="menu-category" name="menuCategory" value="Side" checked="@Model.menuCategory.Contains("Side")"/>
+		Side
+	</label>
+	<label>
+		<input type="checkbox" class="menu-category" name="menuCategory" value="Drink" checked="@Model.menuCategory.Contains("Drink")"/>
+		Drink
+	</label>
 	<br />
-}
-<br />
 
+	Price <br />
+	<label>
+		Min $:
+		<input type="number" min="0" id="minimum-price" name="minimumPrice" step="0.25"/>
+	</label>
+	<label>
+		Max $:
+		<input type="number" min="0" id="maximum-price" name="maximumPrice" step="0.25"/>
+	</label>
+	<br />
 
-<h2>Sides</h2>
-@foreach (DinoDiner.Menu.Side s in Model.menu.AvailableSides)
-{
-	<div class="menu-item">
-		@s.ToString() <br />
-		Price: $@s.Price <br />
-		Calories: @s.Calories <br />
-		Ingredients: <br />
-		@foreach (string str in s.Ingredients)
-		{
+	Excluding Ingredients <br />
+	@foreach (string str in Model.ingredients)
+	{
+		<label>
+			<input type="checkbox" class="excluded-item" name="excludeIngredients" value=str checked="@Model.excludeIngredients.Contains(str)"/>
 			@str <br />
-		}
-	</div>
+		</label>
+	}
+</form>
+
+<div class="split left">
+	<h2>Items</h2>
+	@foreach (DinoDiner.Menu.IMenuItem i in Model.items)
+	{
+		<div>@i.ToString() <br /></div>
+	}
+
+	<h2>Combos</h2>
+	@foreach (DinoDiner.Menu.CretaceousCombo c in Model.menu.AvailableCombos)
+	{
+		<div class="menu-item">
+			@c.ToString() <br />
+			Price: $@c.Price <br />
+			Calories: @c.Calories <br />
+			Ingredients: <br />
+			@foreach (string s in c.Ingredients)
+			{
+				@s <br />
+			}
+		</div>
+		<br />
+	}
 	<br />
-}
-<br />
 
-
-<h2>Drinks</h2>
-@foreach (DinoDiner.Menu.Drink d in Model.menu.AvailableDrinks)
-{
-	<div class="menu-item">
-		@d.ToString() <br />
-		Price: $@d.Price <br />
-		Calories: @d.Calories <br />
-		Ingredients: <br />
-		@foreach (string s in d.Ingredients)
-		{
-			@s <br />
-		}
-	</div>
+	<h2>Entrees</h2>
+	@foreach (DinoDiner.Menu.Entree e in Model.menu.AvailableEntrees)
+	{
+		<div class="menu-item">
+			@e.ToString() <br />
+			Price: $@e.Price <br />
+			Calories: @e.Calories <br />
+			Ingredients: <br />
+			@foreach (string s in e.Ingredients)
+			{
+				@s <br />
+			}
+		</div>
+		<br />
+	}
 	<br />
-}
 
+
+	<h2>Sides</h2>
+	@foreach (DinoDiner.Menu.Side s in Model.menu.AvailableSides)
+	{
+		<div class="menu-item">
+			@s.ToString() <br />
+			Price: $@s.Price <br />
+			Calories: @s.Calories <br />
+			Ingredients: <br />
+			@foreach (string str in s.Ingredients)
+			{
+				@str <br />
+			}
+		</div>
+		<br />
+	}
+	<br />
+
+
+	<h2>Drinks</h2>
+	@foreach (DinoDiner.Menu.Drink d in Model.menu.AvailableDrinks)
+	{
+		<div class="menu-item">
+			@d.ToString() <br />
+			Price: $@d.Price <br />
+			Calories: @d.Calories <br />
+			Ingredients: <br />
+			@foreach (string s in d.Ingredients)
+			{
+				@s <br />
+			}
+		</div>
+		<br />
+	}
+</div>

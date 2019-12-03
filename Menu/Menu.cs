@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace DinoDiner.Menu
 {
@@ -21,6 +22,7 @@ namespace DinoDiner.Menu
             get
             {
                 List<IMenuItem> items = new List<IMenuItem>();
+                items.AddRange(AvailableCombos);
                 items.AddRange(AvailableEntrees);
                 items.AddRange(AvailableSides);
                 items.AddRange(AvailableDrinks);
@@ -90,6 +92,24 @@ namespace DinoDiner.Menu
                 List<Entree> entrees = AvailableEntrees;
                 foreach (Entree e in entrees) combos.Add(new CretaceousCombo(e));
                 return combos;
+            }
+        }
+
+        public List<string> PossibleIngredients
+        {
+            get
+            {
+                HashSet<string> stuff = new HashSet<string>();
+
+                foreach (IMenuItem item in AvailableMenuItems)
+                {
+                    foreach (string str in item.Ingredients)
+                    {
+                        stuff.Add(str);
+                    }
+                }
+
+                return stuff.ToList();
             }
         }
 
